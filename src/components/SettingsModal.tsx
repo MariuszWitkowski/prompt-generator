@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Trash2 } from 'lucide-react';
-import { Template } from '../lib/utils';
+import { Template } from '../lib/types';
 
 interface SettingsModalProps {
   onClose: () => void;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search, Plus, X } from 'lucide-react';
-import { Template } from '../lib/utils';
+import { Template } from '../lib/types';
 
 interface TemplateSelectorProps {
   templates: Template[];

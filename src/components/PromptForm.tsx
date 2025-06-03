@@ -1,7 +1,8 @@
 import React from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { Field, Template } from '../lib/utils';
-import { Plus, Minus, Copy } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { Field, Template } from '../lib/types';
+import { Copy } from 'lucide-react';
+import { ArrayField } from './ArrayField';
 
 interface PromptFormProps {
   template: Template;
@@ -49,40 +50,5 @@ export function PromptForm({ template, fields, onGenerate }: PromptFormProps) {
         Generate Prompt
       </button>
     </form>
-  );
-}
-
-function ArrayField({ field, control, register }: any) {
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: field.id,
-  });
-
-  return (
-    <div className="space-y-2">
-      {fields.map((item, index) => (
-        <div key={item.id} className="flex gap-2">
-          <input
-            {...register(`${field.id}.${index}`)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800"
-          />
-          <button
-            type="button"
-            onClick={() => remove(index)}
-            className="rounded-lg border border-gray-300 p-2 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700"
-          >
-            <Minus className="h-4 w-4" />
-          </button>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={() => append('')}
-        className="flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700"
-      >
-        <Plus className="h-4 w-4" />
-        Add Item
-      </button>
-    </div>
   );
 }
